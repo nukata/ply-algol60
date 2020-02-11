@@ -1,0 +1,32 @@
+begin
+   procedure Absmax(a) Size:(n, m) Result:(y) Subscripts:(i, k);
+      value n, m;
+      array a; integer n, m, i, k; real y;
+      comment The absolute greatest element of the matrix a, of
+         size n by m, is transferred to y, and the subscripts of
+         this element to i and k;
+   begin integer p, q;
+      y := 0;
+      i := k := 1;
+      for p := 1 step 1 until n do
+         for q := 1 step 1 until m do begin
+            real e; e := abs(a[p, q]);
+            if e > y then begin
+               y := e;
+               i := p; k := q
+            end if
+         end for q
+   end Absmax;
+
+   real ans;
+   integer x, y;
+   array m[1:3, 1:2];
+   m[1, 1] :=  1.0; m[1, 2] := -21.2;
+   m[2, 1] := 12.3; m[2, 2] :=   0.0;
+   m[3, 1] := 10.4; m[3, 2] :=  16.3;
+   
+   Absmax(m) Size:(3, 2) Result:(ans) Subscripts:(x, y);
+   outstring(1, `ans := '); outreal(1, ans); 
+   outstring(1, ` at '); outinteger(1, x); outinteger(1, y)
+end Absmax Example.
+   See "Modified Report on the Alogrithmic Language Algol 60", 5.4.2.

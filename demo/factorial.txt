@@ -1,0 +1,20 @@
+begin
+   comment
+      入力された整数に対して階乗を計算する。
+      負数が入力されたら終了する;
+
+   integer procedure Fac(k);
+      value k; integer k;
+      begin
+        if k = 0 then Fac := 1
+                 else Fac := k * Fac(k - 1)
+      end Fac;
+
+   integer n;
+ LOOP:
+   read(n);
+   if n < 0 then goto EXIT;
+   print(n, Fac(n));
+   goto LOOP;
+ EXIT:
+end
